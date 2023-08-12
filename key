@@ -1,0 +1,7 @@
+mysql> create table if not exists t5(
+    -> stu_id int unsigned,
+    -> course char(10) comment 'ID',
+    -> score tinyint unsigned default 0 comment 
+    -> primary key(stu_id, course)
+    -> );
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="logAop" class="cn.edu.springdemo.aopDemo.LogAopImpl" />
+    <bean id="loggerAspect" class="cn.edu.springdemo.aopDemo.LoggerAspect" />
+    <aop:config>
+        <aop:pointcut id="commonExpression" expression="execution(* cn.edu.springdemo.aopDemo.*.*(..))" />
+        <aop:aspect ref="loggerAspect" order="1">
+            <aop:before method="beforeDevice" pointcut-ref="commonExpression" />
+            <!--<aop:after method="afterDevice" pointcut-ref="commonExpression" />-->
+            <aop:after-returning method="resultDevice" pointcut-ref="commonExpression" returning="result" />
+            <aop:after-throwing method="exceptionDevice" pointcut-ref="commonExpression" throwing="exception" />
+        </aop:aspect>
+    </aop:config>
+</beans>

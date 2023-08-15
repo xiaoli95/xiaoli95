@@ -1,0 +1,10 @@
+let selectionSort = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    min = i
+    for (let j = i + 1; j < len; j++) {
+      min = arr[j] < arr[min] ? j : min
+    }
+    [arr[i], arr[min]] = [arr[min], arr[i]]
+  }
+  return arr
+}
